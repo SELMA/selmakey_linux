@@ -5,14 +5,14 @@
 ** Login   <alexmog@epitech.net>
 ** 
 ** Started on  Thu Jun 26 20:30:48 2014 Moghrabi Alexandre
-** Last update Thu Jun 26 21:56:10 2014 Moghrabi Alexandre
+** Last update Thu Jun 26 22:24:11 2014 Moghrabi Alexandre
 */
 
 #include <unistd.h>
 #include "init.h"
 #include "listen.h"
 
-int		main(int ac, char **av)
+int		main(void)
 {
   int		fd;
 
