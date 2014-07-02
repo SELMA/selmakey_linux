@@ -8,13 +8,11 @@
 ## Last update Thu Jun 26 21:58:42 2014 Moghrabi Alexandre
 ##
 
-BINDIR= bin/
-
 SRCDIR= src/
 
 INCDIR= include/
 
-NAME=	$(BINDIR)selmakey
+NAME=	selmakey
 
 SRC=	$(SRCDIR)main.c		\
 	$(SRCDIR)listen.c	\
