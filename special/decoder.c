@@ -5,7 +5,7 @@
 ** Login   <casoni_f@epitech.net>
 ** 
 ** Started on  Wed Jul  2 19:00:26 2014 Fabien Casoni
-** Last update Thu Jul  3 17:04:10 2014 Fabien Casoni
+** Last update Thu Jul  3 17:28:59 2014 Fabien Casoni
 */
 
 #include "decoder.h"
@@ -123,11 +123,13 @@ void		start_decode(t_decoder *decoder)
 {
   ENTRY		*result;
   int		shift;
+  int		caps_lock;
 
   shift = 0;
+  caps_lock = 0;
   while (1337)
     {
-      if (fscanf(decoder->file, "%d\n%d\n%d", &decoder->keycode[0],
+      if (fscanf(decoder->file, "%d\n%d\n%d\n", &decoder->keycode[0],
 		 &decoder->keycode[1], &decoder->keycode[2]) < 0)
 	exit(1);
       decoder->tmp = (char *)malloc(sizeof(int));
@@ -143,6 +145,12 @@ void		start_decode(t_decoder *decoder)
 	      if (strcmp((char *)result->data, "[ENTER]") == 0
 		  || strcmp((char *)result->data, "[KPENTER]") == 0)
 		printf("\n");
+	      else if (caps_lock == 0 &&
+		       strcmp((char *)result->data, "[CAPS_LOCK]") == 0)
+		fscanf(decoder->file, "%d\n", &caps_lock);
+	      else if (caps_lock == 1 &&
+		       strcmp((char *)result->data, "[CAPS_LOCK]") == 0)
+		caps_lock = -1;
 	    }
 	  else if (decoder->keycode[1] == 2)
 	    {
@@ -160,6 +168,9 @@ void		start_decode(t_decoder *decoder)
 		  shift = 0;
 		  printf("[END_OF_SHIFT]");
 		}
+	      else if (caps_lock == -1 &&
+		       strcmp((char *)result->data, "[CAPS_LOCK]") == 0)
+		fscanf(decoder->file, "%d\n", &caps_lock);
 	    }
 	}
     }
