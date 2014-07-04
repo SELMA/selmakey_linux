@@ -5,7 +5,7 @@
 ** Login   <casoni_f@epitech.net>
 ** 
 ** Started on  Wed Jul  2 18:19:29 2014 Fabien Casoni
-** Last update Thu Jul  3 18:30:42 2014 Fabien Casoni
+** Last update Fri Jul  4 15:17:23 2014 Fabien Casoni
 */
 
 #include <stdio.h>
@@ -49,14 +49,20 @@ void			find_kbd(char *path)
   found = 0;
   fd = fopen("/proc/bus/input/devices", "r");
   sprintf(path, "/dev/input/event");
-  while (!found && fscanf(fd, "%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
-			  buff[0], buff[1], buff[2], buff[3], buff[4],
-			  buff[5], buff[6], buff[7], buff[8], 
-			  buff[9]) > 0)
+  while (!found && fgets(buff[0], 412, fd) != NULL
+	 && fgets(buff[1], 412, fd) != NULL
+	 && fgets(buff[2], 412, fd) != NULL
+	 && fgets(buff[3], 412, fd) != NULL
+	 && fgets(buff[4], 412, fd) != NULL
+	 && fgets(buff[5], 412, fd) != NULL
+	 && fgets(buff[6], 412, fd) != NULL
+	 && fgets(buff[7], 412, fd) != NULL
+	 && fgets(buff[8], 412, fd) != NULL
+	 && fgets(buff[9], 412, fd) != NULL)
     if (strstr(buff[1], "keyboard") != NULL
 	|| strstr(buff[1], "Keyboard") != NULL)
       {
-	sprintf(path, "%s%c", path, buff[5][strlen(buff[5]) - 1]);
+	sprintf(path, "%s%c", path, buff[5][strlen(buff[5]) - 3]);
 	found = 1;
       }
   fclose(fd);
