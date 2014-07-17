@@ -5,7 +5,7 @@
 ** Login   <casoni_f@epitech.net>
 ** 
 ** Started on  Wed Jul  2 18:19:29 2014 Fabien Casoni
-** Last update Thu Jul 17 18:07:21 2014 Moghrabi Alexandre
+** Last update Thu Jul 17 18:10:10 2014 Moghrabi Alexandre
 */
 
 #include <stdio.h>
@@ -17,6 +17,8 @@
 #include <sys/epoll.h>
 #include <signal.h>
 #include "selmakey.h"
+
+// LANCE VALGRIND DES FOIS! ET COMPILE AVEC -Wall ;) y'avait pas mal de warnings
 
 void			sigint_handler(int sig)
 {

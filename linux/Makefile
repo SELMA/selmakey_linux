@@ -5,7 +5,7 @@
 ## Login   <alexmog@epitech.net>
 ## 
 ## Started on  Thu Jun 26 20:25:41 2014 Moghrabi Alexandre
-## Last update Thu Jun 26 21:58:42 2014 Moghrabi Alexandre
+## Last update Thu Jul 17 18:32:50 2014 Moghrabi Alexandre
 ##
 
 SRCDIR= src/
@@ -14,9 +14,9 @@ INCDIR= include/
 
 NAME=	selmakey
 
-SRC=	$(SRCDIR)main.c		\
-	$(SRCDIR)listen.c	\
-	$(SRCDIR)init.c
+SRC=	$(SRCDIR)init.c		\
+	$(SRCDIR)listeners.c	\
+	$(SRCDIR)main.c
 
 OBJ=	$(SRC:.c=.o)
 
